@@ -42,3 +42,46 @@ console.log(myFunction(3,4));
 //arrow functions
 //let add=(a,b)=>{return a+b;};
 //let add=(a,b)=>a+b;
+
+//method chaining
+let str="Hello World";
+let result=str.toUpperCase().slice(0,5).replace("HELLO","HI");
+console.log(result);
+//spread operator
+let arr1=[1,2,3];
+let arr2=[4,5,6];
+let arr3=[...arr1,...arr2];
+console.log(arr3);
+//destructuring
+let [a,b,c]=arr1;
+console.log(a,b,c);
+//object destructuring
+let person={name:"John",age:30};
+let {name,age}=person;
+console.log(name,age);
+//callback functions: functions passed as arguments to other functions
+function greet(name,goodnightCallback){
+    console.log("Hello "+name);
+    goodnightCallback();
+}
+function goodnight(){
+    console.log("Goodnight!");
+}
+greet("Alice",goodnight);
+//class
+class Animal{
+    constructor(name){
+        this.name=name;
+    }       
+    speak(){
+        console.log(this.name+" makes a noise.");
+    }   
+}
+//synchronous vs asynchronous
+//synchronous code runs sequentially
+//asynchronous code runs independently
+setTimeout(()=>{
+    console.log("This is asynchronous code.");
+},2000);
+console.log("This is synchronous code.");
+//promises..
