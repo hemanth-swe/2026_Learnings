@@ -1,0 +1,13 @@
+body{
+    background-color:rgb(255, 235, 205);
+}
+.Container{
+    width:250px;
+    height:200px;
+    border:2px solid black;
+    margin:50px auto;
+    background-color: rgb(183, 255, 255);
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+}
