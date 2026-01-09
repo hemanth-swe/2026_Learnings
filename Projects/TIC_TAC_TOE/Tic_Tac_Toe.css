@@ -1,0 +1,32 @@
+body{
+    background-color: rgba(1, 78, 23, 0.652);
+}
+h1{
+    text-align: center;
+}
+.board{
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 200px;
+    height: 200px;
+    margin: auto auto;
+    
+}
+.cell{
+    height:60px;
+    width: 60px;
+    margin: auto;
+    font-size: 26px;
+    background-color: rgb(219, 219, 219);
+    border-radius: 10px;
+}
+#resetBtn{
+    margin:30px auto;
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color: rgba(255, 36, 25, 0.611);
+    border-radius: 10px;
+}
