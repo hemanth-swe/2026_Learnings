@@ -157,13 +157,13 @@
 // SOAP: Simple Object Access Protocol
 // GraphQL: query language for APIs
 
-const facts=async()=>{
-const URL="https://official-joke-api.appspot.com/random_joke";
-let response=await fetch(URL);
-console.log(response.status);
-console.log(response);
-let data=await response.json();
-console.log(data);
-console.log(`Joke: ${data.setup} - ${data.punchline}`);
-}
-facts();
+// const facts=async()=>{
+// const URL="https://official-joke-api.appspot.com/random_joke";
+// let response=await fetch(URL);
+// console.log(response.status);
+// console.log(response);
+// let data=await response.json();
+// console.log(data);
+// console.log(`Joke: ${data.setup} - ${data.punchline}`);
+// }
+// facts();
