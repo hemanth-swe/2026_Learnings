@@ -1,0 +1,14 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.nav ul{
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    padding: 20px;
+}
+ul li{
+    margin-left: 20px;
+}
