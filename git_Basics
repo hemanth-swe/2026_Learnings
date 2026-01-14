@@ -1,0 +1,19 @@
+git --version
+git config --global user.name "hkg"
+git config --global user.email "hkg@email.com"
+git config --list
+git init
+git clone
+git status
+git add file.txt
+git commit -m "message"
+git branch feature1
+git checkout feature1
+git checkout -b feature1
+git merge feature1
+git remote -v
+git remote add origin <url>
+git push origin main
+git pull origin main
+
+git reset --hard HEAD~1
