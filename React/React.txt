@@ -1,0 +1,17 @@
+React is a JavaScript library for building fast, component-based user interfaces using a Virtual DOM.
+node -v
+npm -v
+npm create vite@latest my-app
+cd my-app
+npm install
+npm run dev
+OLD--
+npx create-react-app my-app
+cd my-app
+npm start
+JSX (JavaScript + HTML)
+FOLDER STRUCTURE
+APP
+-public
+-src
+-index.html
