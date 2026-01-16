@@ -1,7 +1,23 @@
+import { useState } from "react"
+
+const Card = ({title}) => {
+  const [hasLiked,setHasLiked]=useState(false)
+  return ( <div>
+      <h3>{title}</h3>
+
+      <button onClick={() => setHasLiked(!hasLiked)}>
+        {hasLiked ? "❤️" : "🤍"}
+      </button>
+    </div>
+  )
+}
+
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline text-red-500">
-      Hello world!
-    </h1>
+    <>
+      <Card title="movie_1"/>
+      <Card title="movie_2"/>
+      <Card title="movie_3"/>
+    </>
   )
 }
