@@ -1,0 +1,6 @@
+go to mvn repository
+download Mysql connector
+project->build path->config build path-> add external jar->select from downloads
+import java.sql.*;
+Class.forName("com.mysql.jdbc.Driver");
+
