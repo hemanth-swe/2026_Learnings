@@ -3,4 +3,166 @@ download Mysql connector
 project->build path->config build path-> add external jar->select from downloads
 import java.sql.*;
 Class.forName("com.mysql.jdbc.Driver");
+What I Learned from YouTube
 
+From YouTube tutorials, I learned the basic JDBC flow:
+
+Load JDBC Driver
+
+Create database connection
+
+Create Statement
+
+Execute SQL query
+
+Process ResultSet
+
+Typical old-style JDBC code:
+Class.forName("com.mysql.jdbc.Driver");
+Connection con = DriverManager.getConnection(url, user, pass);
+Statement st = con.createStatement();
+ResultSet rs = st.executeQuery("SELECT * FROM student");
+
+
+This helped me understand how JDBC works internally
+But it uses outdated and unsafe practices
+
+Mistakes in the Old Code (Identified)
+Using throws Exception in main
+public static void main(String[] args) throws Exception
+
+
+Hides real SQL errors
+
+Bad practice for real applications
+
+Using deprecated MySQL driver
+Class.forName("com.mysql.jdbc.Driver");
+
+
+Deprecated after JDBC 4.0
+
+Not required in Java 6+Using Statement instead of PreparedStatement
+Statement st = con.createStatement();
+
+
+Vulnerable to SQL Injection
+Slower performance
+
+4️SQL Injection vulnerability
+String sql = "SELECT * FROM actor WHERE first_name = '" + name + "'";
+
+
+If input is:
+
+abc' OR '1'='1
+
+
+DB executes:
+
+WHERE first_name = 'abc' OR '1'='1'
+
+
+Returns all rows
+
+What I Corrected Myself
+Replaced Statement with PreparedStatement
+PreparedStatement ps = con.prepareStatement(sql);
+ps.setString(1, name);
+
+
+SQL and data are separated
+
+User input treated as string, not SQL
+
+SQL Injection prevented
+
+Correct understanding of parameter binding
+
+Even if input is:
+
+abc' OR '1'='1
+
+
+It is sent as:
+
+first_name = "abc' OR '1'='1"
+
+
+Safe
+No injection
+
+Improved ResultSet handling
+rs.getString("column_name");
+
+
+Column name preferred over index
+
+What I Learned from ChatGPT (New Learnings)
+1. Class.forName() is NOT needed anymore
+
+JDBC 4.0+ auto-loads drivers
+
+Cleaner and modern code
+
+2. Use try-with-resources (VERY IMPORTANT)
+
+Automatically closes:
+
+Connection
+
+PreparedStatement
+
+ResultSet
+
+Prevents memory leaks.
+
+3. Catch specific exceptions
+catch(SQLException e)
+
+
+Better debugging and control.
+
+4. Best practices matter for:
+
+Interviews
+
+GATE
+
+Real-world backend projects
+
+Final Correct & Modern JDBC Code (2026 Ready)
+import java.sql.*;
+
+public class JdbcDemo {
+
+    public static void main(String[] args) {
+
+        String url = "jdbc:mysql://localhost:3306/dbname";
+        String user = "username";
+        String pass = "password";
+
+        String sql = "SELECT first_name, last_name FROM actor WHERE first_name = ?";
+
+        try (
+            Connection con = DriverManager.getConnection(url, user, pass);
+            PreparedStatement ps = con.prepareStatement(sql);
+        ) {
+
+            String name = "abc' OR '1'='1"; // attacker input
+            ps.setString(1, name);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println(
+                        rs.getString("first_name") + " " +
+                        rs.getString("last_name")
+                    );
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
