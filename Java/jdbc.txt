@@ -209,3 +209,50 @@ public class MainApp {
         }
     }
     }
+
+
+import java.sql.*;
+
+public class MainApp {
+
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.addStudent(2, "hemanth");
+    }
+}
+
+class Student {
+
+    String url = "jdbc:mysql://localhost:3306/db";
+    String user = "hkg";
+    String password = "";
+
+    // Method returns connection
+    public Connection connect() {
+        try {
+            return DriverManager.getConnection(url, user, password);
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public void addStudent(int rollno, String sname) {
+
+        String sql = "INSERT INTO students VALUES (?, ?)";
+
+        try (Connection con = connect();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, rollno);
+            ps.setString(2, sname);
+
+            ps.executeUpdate();
+            System.out.println("Student inserted successfully");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+
