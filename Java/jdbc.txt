@@ -256,3 +256,19 @@ class Student {
     }
 }
 
+int sum = i + j;
+	    req.setAttribute("k", sum);
+
+	    RequestDispatcher rd = req.getRequestDispatcher("Square");
+	    try {
+	        rd.forward(req, res);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+         try {
+	        PrintWriter out = res.getWriter();
+	        int k = (int) req.getAttribute("k");
+	        out.println("Square is: " + (k * k));
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
