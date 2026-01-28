@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="add" method="get">
+<input type="text" name="num1">
+<input type="text" name="num2">
+<button type="submit">Add</button>
+</form>
+</body>
+</html>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>NewServlet</display-name>
+
+   <servlet>
+    <servlet-name>AddServlet</servlet-name>
+    <servlet-class>com.NewServlet.AddServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>AddServlet</servlet-name>
+    <url-pattern>/add</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>Square</servlet-name>
+    <servlet-class>com.NewServlet.Square</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Square</servlet-name>
+    <url-pattern>/Square</url-pattern>
+</servlet-mapping>
+
+
+</web-app>
+
+
+package com.NewServlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class AddServlet extends HttpServlet {
+
+	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+	    int i = Integer.parseInt(req.getParameter("num1"));
+	    int j = Integer.parseInt(req.getParameter("num2"));
+
+	    int sum = i + j;
+	    req.setAttribute("k", sum);
+
+	    RequestDispatcher rd = req.getRequestDispatcher("Square");
+	    try {
+	        rd.forward(req, res);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	}
+
+
+}
