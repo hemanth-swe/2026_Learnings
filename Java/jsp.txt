@@ -1,0 +1,9 @@
+JSP Tags You MUST Know
+Tag	Meaning
+<%= %>	Output Java value
+<% %>	Java code
+<%! %>
+<%@ %>
+${}	Expression Language
+<jsp:useBean>	Use Java class
+<jsp:include>	Include page
