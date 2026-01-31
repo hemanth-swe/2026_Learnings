@@ -7,3 +7,23 @@ Tag	Meaning
 ${}	Expression Language
 <jsp:useBean>	Use Java class
 <jsp:include>	Include page
+
+HttpSession session =req.gwtSession();
+session.setAttribute("k",k);
+cookie cookie=new Cookie("k",k);
+res.addCookie(cookie);
+JSP objects 
+request response pageContext out session application config
+EXCEPTION HANDLING
+<%@ ..... errorPage="xyz.jsp" %>
+isErrorPage="true"
+<%= exception.getMessage()%>
+JDBC same like ServletRequest
+
+MVC 
+jsp only view logic 
+servlets business logic
+service-->DAO database connectivity 
+JSTL jsp standard Tag library
+${k}
+
