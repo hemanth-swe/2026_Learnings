@@ -36,3 +36,18 @@ ${k}
 <c:out value="${gadget.name}"></c:out>
 <c:out value="${gadget.price}"></c:out>
 </c:forEach>
+
+
+Filters
+2pages jsp,java servlets
+new Filter com.package classname"...." request/pattern is /servletName
+chain.doFilter()
+pubile void doFilter()
+{
+    PrintWriter out =response.getWriter();
+    HttpServletRequest req=(HttpServletRequest) request;
+    if(id>1)
+        chain.doFilter(req,res);
+    else
+        out.println("Invalid Input);
+}
