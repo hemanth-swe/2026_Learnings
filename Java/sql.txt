@@ -14,3 +14,4 @@ grant select on emp to user with grant option;
 
 revoke select on emp from user;
 revoke all on emp from user;
+limit 1
